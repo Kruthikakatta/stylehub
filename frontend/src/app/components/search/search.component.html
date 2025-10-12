@@ -1,0 +1,47 @@
+<!-- Search Page -->
+<div class="search-page">
+  <app-page-header 
+    title="Search Outfits" 
+    subtitle="Find the perfect outfit for any occasion"
+    backgroundClass="gradient-secondary">
+  </app-page-header>
+
+  <div class="search-container">
+    <div class="search-bar">
+      <input type="text" placeholder="Search for outfits, styles, or occasions..." class="search-input">
+      <button class="search-btn">🔍</button>
+    </div>
+    
+    <div class="search-filters">
+      <select class="filter-select">
+        <option>All Categories</option>
+        <option>Casual</option>
+        <option>Formal</option>
+        <option>Party</option>
+      </select>
+      <select class="filter-select">
+        <option>All Colors</option>
+        <option>Black</option>
+        <option>White</option>
+        <option>Blue</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="search-results">
+    <div class="results-header">
+      <h2>Search Results</h2>
+      <span class="results-count">24 outfits found</span>
+    </div>
+    
+    <div class="results-grid">
+      <div class="result-card" *ngFor="let outfit of searchResults">
+        <img [src]="outfit.imageUrl" [alt]="outfit.title">
+        <div class="result-info">
+          <h3>{{ outfit.title }}</h3>
+          <p>{{ outfit.category }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<!-- Navigation Header -->
+<header class="header">
+  <nav class="navbar">
+    <div class="nav-brand">
+      <a routerLink="/" class="brand-link" (click)="closeMenu()">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="currentColor"/>
+          <path d="M19 15L20.5 19.5L25 21L20.5 22.5L19 27L17.5 22.5L13 21L17.5 19.5L19 15Z" fill="currentColor"/>
+        </svg>
+        <span class="brand-text">StyleHub</span>
+      </a>
+    </div>
+    
+    <!-- Desktop Navigation -->
+    <div class="nav-menu" [class.menu-open]="isMenuOpen">
+      <a routerLink="/" routerLinkActive="active" class="nav-link" (click)="closeMenu()">Home</a>
+      <a routerLink="/outfits" routerLinkActive="active" class="nav-link" (click)="closeMenu()">Outfits</a>
+      <a routerLink="/categories" routerLinkActive="active" class="nav-link" (click)="closeMenu()">Categories</a>
+      <a routerLink="/search" routerLinkActive="active" class="nav-link" (click)="closeMenu()">Search</a>
+      <a routerLink="/bookmarks" routerLinkActive="active" class="nav-link" (click)="closeMenu()">Bookmarks</a>
+      <a routerLink="/notes" routerLinkActive="active" class="nav-link" (click)="closeMenu()">Notes</a>
+    </div>
+    
+    <!-- Desktop Actions -->
+    <div class="nav-actions">
+      <a routerLink="/login" class="btn btn-outline">Login</a>
+      <a routerLink="/signup" class="btn btn-primary">Sign Up</a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" (click)="toggleMenu()" [class.active]="isMenuOpen">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-overlay" [class.active]="isMenuOpen" (click)="closeMenu()"></div>
+</header>

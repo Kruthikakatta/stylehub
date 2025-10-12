@@ -1,0 +1,130 @@
+<!-- Loading State -->
+<div class="loading-state" *ngIf="!outfit">
+  <div class="loading-spinner"></div>
+  <p>Loading outfit details...</p>
+</div>
+
+<!-- Outfit Detail Content -->
+<div class="outfit-detail" *ngIf="outfit">
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb">
+    <a routerLink="/outfits">Outfits</a>
+    <span class="separator">›</span>
+    <span class="current">{{ outfit.title }}</span>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="detail-content">
+    <!-- Image Gallery -->
+    <div class="image-section">
+      <div class="main-image">
+        <img [src]="outfit.imageUrl || 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=600&h=800&fit=crop'" 
+             [alt]="outfit.title" 
+             class="outfit-image">
+        <div class="image-overlay">
+          <button class="btn btn-primary btn-icon" title="Full Screen">
+            <span class="icon">🔍</span>
+          </button>
+          <button class="btn btn-outline btn-icon" title="Add to Bookmarks">
+            <span class="icon">❤️</span>
+          </button>
+        </div>
+      </div>
+      
+      <div class="thumbnail-gallery" *ngIf="outfit.images && outfit.images.length > 1">
+        <div class="thumbnail" 
+             *ngFor="let img of outfit.images; let i = index"
+             [class.active]="i === selectedImageIndex"
+             (click)="selectImage(i)">
+          <img [src]="img" [alt]="outfit.title + ' ' + (i + 1)">
+        </div>
+      </div>
+    </div>
+
+    <!-- Outfit Information -->
+    <div class="info-section">
+      <div class="outfit-header">
+        <div class="outfit-title-section">
+          <h1 class="outfit-title">{{ outfit.title }}</h1>
+          <div class="outfit-meta">
+            <span class="category-badge">{{ outfit.category || 'Casual' }}</span>
+            <div class="rating-section">
+              <div class="stars">⭐⭐⭐⭐⭐</div>
+              <span class="rating-text">({{ outfit.rating || 4.8 }}) • {{ outfit.reviews || 124 }} reviews</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="outfit-stats">
+          <div class="stat">
+            <span class="stat-number">{{ outfit.views || 1250 }}</span>
+            <span class="stat-label">Views</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">{{ outfit.likes || 89 }}</span>
+            <span class="stat-label">Likes</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">{{ outfit.saves || 34 }}</span>
+            <span class="stat-label">Saves</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="outfit-description">
+        <h3>Description</h3>
+        <p>{{ outfit.description || 'A beautiful and stylish outfit perfect for any occasion. This carefully curated ensemble combines comfort with elegance, making it ideal for both casual and semi-formal events.' }}</p>
+      </div>
+
+      <!-- Style Tips -->
+      <div class="style-tips" *ngIf="outfit.styleTips">
+        <h3>Style Tips</h3>
+        <ul class="tips-list">
+          <li *ngFor="let tip of outfit.styleTips">{{ tip }}</li>
+        </ul>
+      </div>
+
+      <!-- Color Palette -->
+      <div class="color-palette" *ngIf="outfit.colors">
+        <h3>Color Palette</h3>
+        <div class="colors">
+          <div class="color-swatch" 
+               *ngFor="let color of outfit.colors"
+               [style.background-color]="color.color"
+               [title]="color.name">
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="action-buttons">
+        <button class="btn btn-primary btn-lg">
+          <span class="icon">❤️</span>
+          Save Outfit
+        </button>
+        <button class="btn btn-outline btn-lg">
+          <span class="icon">📤</span>
+          Share
+        </button>
+        <button class="btn btn-secondary btn-lg">
+          <span class="icon">📝</span>
+          Add Note
+        </button>
+      </div>
+
+      <!-- Related Items -->
+      <div class="related-section">
+        <h3>Similar Outfits</h3>
+        <div class="related-grid">
+          <div class="related-item" *ngFor="let item of relatedOutfits">
+            <img [src]="item.imageUrl" [alt]="item.title">
+            <div class="related-info">
+              <h4>{{ item.title }}</h4>
+              <p>{{ item.category }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

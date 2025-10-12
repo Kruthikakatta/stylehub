@@ -1,0 +1,353 @@
+/* Signup Component Styles - Extends Login Styles */
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-hero);
+  position: relative;
+  padding: var(--space-6);
+  overflow: hidden;
+}
+
+.auth-container {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-10);
+  width: 100%;
+  max-width: 500px;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 10;
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+.auth-header h1 {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: var(--space-2);
+}
+
+.auth-header p {
+  color: var(--gray-600);
+  font-size: var(--font-size-lg);
+}
+
+.auth-form {
+  margin-bottom: var(--space-8);
+}
+
+.form-group {
+  margin-bottom: var(--space-6);
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: var(--gray-700);
+  margin-bottom: var(--space-2);
+  font-size: var(--font-size-sm);
+}
+
+.form-input {
+  width: 100%;
+  padding: var(--space-4);
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-base);
+  transition: all 0.2s ease;
+  background: white;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 3px var(--primary-100);
+}
+
+.form-input::placeholder {
+  color: var(--gray-400);
+}
+
+.password-input {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: var(--space-3);
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-1);
+  border-radius: var(--radius-md);
+  transition: background-color 0.2s ease;
+}
+
+.password-toggle:hover {
+  background: var(--gray-100);
+}
+
+.password-toggle .icon {
+  font-size: var(--font-size-lg);
+}
+
+.password-strength {
+  margin-top: var(--space-2);
+}
+
+.strength-bar {
+  width: 100%;
+  height: 4px;
+  background: var(--gray-200);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: var(--space-1);
+}
+
+.strength-fill {
+  height: 100%;
+  transition: all 0.3s ease;
+  border-radius: var(--radius-full);
+}
+
+.strength-fill.weak {
+  width: 33%;
+  background: var(--accent-rose);
+}
+
+.strength-fill.medium {
+  width: 66%;
+  background: var(--accent-amber);
+}
+
+.strength-fill.strong {
+  width: 100%;
+  background: var(--accent-emerald);
+}
+
+.strength-text {
+  font-size: var(--font-size-xs);
+  color: var(--gray-500);
+  font-weight: 500;
+}
+
+.form-options {
+  margin-bottom: var(--space-4);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  color: var(--gray-700);
+  line-height: 1.4;
+}
+
+.checkbox {
+  margin-right: var(--space-2);
+  margin-top: 2px;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary-500);
+  flex-shrink: 0;
+}
+
+.terms-link {
+  color: var(--primary-600);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.terms-link:hover {
+  color: var(--primary-700);
+  text-decoration: underline;
+}
+
+.btn-full {
+  width: 100%;
+  justify-content: center;
+  margin-bottom: var(--space-6);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.auth-divider {
+  text-align: center;
+  margin: var(--space-8) 0;
+  position: relative;
+}
+
+.auth-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gray-200);
+  z-index: 1;
+}
+
+.auth-divider span {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 0 var(--space-4);
+  color: var(--gray-500);
+  font-size: var(--font-size-sm);
+  position: relative;
+  z-index: 2;
+}
+
+.social-login {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+}
+
+.btn-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border: 2px solid var(--gray-200);
+  background: white;
+  transition: all 0.2s ease;
+}
+
+.btn-social:hover {
+  border-color: var(--gray-300);
+  background: var(--gray-50);
+}
+
+.btn-social .icon {
+  font-size: var(--font-size-lg);
+}
+
+.auth-footer {
+  text-align: center;
+}
+
+.auth-footer p {
+  color: var(--gray-600);
+  font-size: var(--font-size-base);
+}
+
+.auth-link {
+  color: var(--primary-600);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.auth-link:hover {
+  color: var(--primary-700);
+}
+
+/* Decorative Background */
+.auth-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.decoration-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.circle-1 {
+  width: 180px;
+  height: 180px;
+  top: 15%;
+  left: 5%;
+  animation: float 7s ease-in-out infinite;
+}
+
+.circle-2 {
+  width: 120px;
+  height: 120px;
+  top: 70%;
+  right: 10%;
+  animation: float 9s ease-in-out infinite reverse;
+}
+
+.circle-3 {
+  width: 80px;
+  height: 80px;
+  bottom: 15%;
+  left: 25%;
+  animation: float 11s ease-in-out infinite;
+}
+
+.circle-4 {
+  width: 60px;
+  height: 60px;
+  top: 40%;
+  right: 30%;
+  animation: float 13s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .auth-page {
+    padding: var(--space-4);
+  }
+
+  .auth-container {
+    padding: var(--space-8);
+    max-width: 100%;
+  }
+
+  .auth-header h1 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .social-login {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-container {
+    padding: var(--space-6);
+  }
+
+  .circle-1,
+  .circle-2,
+  .circle-3,
+  .circle-4 {
+    display: none;
+  }
+}

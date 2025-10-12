@@ -1,0 +1,31 @@
+<!-- Page Header Component -->
+<div class="page-header" [class]="backgroundClass">
+  <div class="header-content">
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb" *ngIf="showBreadcrumb && breadcrumbItems.length > 0">
+      <ng-container *ngFor="let item of breadcrumbItems; let isLast = last">
+        <a *ngIf="item.link && !isLast" [routerLink]="item.link" class="breadcrumb-link">{{ item.label }}</a>
+        <span *ngIf="!item.link || isLast" class="breadcrumb-current">{{ item.label }}</span>
+        <span *ngIf="!isLast" class="breadcrumb-separator">›</span>
+      </ng-container>
+    </nav>
+
+    <!-- Header Text -->
+    <div class="header-text">
+      <h1 class="header-title">{{ title }}</h1>
+      <p class="header-subtitle" *ngIf="subtitle">{{ subtitle }}</p>
+    </div>
+
+    <!-- Header Actions Slot -->
+    <div class="header-actions">
+      <ng-content select="[slot=actions]"></ng-content>
+    </div>
+  </div>
+
+  <!-- Decorative Elements -->
+  <div class="header-decoration">
+    <div class="decoration-circle circle-1"></div>
+    <div class="decoration-circle circle-2"></div>
+    <div class="decoration-circle circle-3"></div>
+  </div>
+</div>

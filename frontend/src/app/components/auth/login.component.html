@@ -1,0 +1,80 @@
+<!-- Login Page -->
+<div class="auth-page">
+  <div class="auth-container">
+    <div class="auth-header">
+      <h1>Welcome Back</h1>
+      <p>Sign in to your StyleHub account</p>
+    </div>
+
+    <form class="auth-form" (ngSubmit)="login()">
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input 
+          type="email" 
+          id="email"
+          [(ngModel)]="email" 
+          name="email" 
+          placeholder="Enter your email"
+          class="form-input"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="password-input">
+          <input 
+            type="password" 
+            id="password"
+            [(ngModel)]="password" 
+            name="password" 
+            placeholder="Enter your password"
+            class="form-input"
+            required>
+          <button type="button" class="password-toggle" (click)="togglePassword()">
+            <span class="icon">{{ showPassword ? '👁️' : '🙈' }}</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="form-options">
+        <label class="checkbox-label">
+          <input type="checkbox" class="checkbox">
+          <span class="checkmark"></span>
+          Remember me
+        </label>
+        <a href="#" class="forgot-password">Forgot Password?</a>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-full">
+        <span class="icon">🔑</span>
+        Sign In
+      </button>
+    </form>
+
+    <div class="auth-divider">
+      <span>or continue with</span>
+    </div>
+
+    <div class="social-login">
+      <button class="btn btn-outline btn-social">
+        <span class="icon">📧</span>
+        Google
+      </button>
+      <button class="btn btn-outline btn-social">
+        <span class="icon">📘</span>
+        Facebook
+      </button>
+    </div>
+
+    <div class="auth-footer">
+      <p>Don't have an account? <a routerLink="/signup" class="auth-link">Sign up here</a></p>
+    </div>
+  </div>
+
+  <!-- Decorative Background -->
+  <div class="auth-decoration">
+    <div class="decoration-circle circle-1"></div>
+    <div class="decoration-circle circle-2"></div>
+    <div class="decoration-circle circle-3"></div>
+  </div>
+</div>

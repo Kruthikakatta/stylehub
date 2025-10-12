@@ -1,0 +1,107 @@
+<!-- Page Header -->
+<app-page-header 
+  title="Fashion Collection" 
+  subtitle="Discover amazing outfits curated by fashion experts"
+  backgroundClass="gradient-primary">
+</app-page-header>
+
+<!-- Filters -->
+<div class="filters-section">
+  <div class="filters-container">
+    <div class="filter-group">
+      <label for="category-filter">Category</label>
+      <select id="category-filter" class="filter-select">
+        <option value="">All Categories</option>
+        <option value="casual">Casual</option>
+        <option value="formal">Formal</option>
+        <option value="party">Party</option>
+        <option value="street">Street</option>
+      </select>
+    </div>
+    
+    <div class="filter-group">
+      <label for="sort-filter">Sort By</label>
+      <select id="sort-filter" class="filter-select">
+        <option value="newest">Newest</option>
+        <option value="popular">Most Popular</option>
+        <option value="trending">Trending</option>
+        <option value="alphabetical">A-Z</option>
+      </select>
+    </div>
+    
+    <div class="search-group">
+      <input type="text" placeholder="Search outfits..." class="search-input">
+      <button class="search-btn">🔍</button>
+    </div>
+  </div>
+</div>
+
+<!-- Outfits Grid -->
+<div class="outfits-container">
+  <div class="outfits-grid" *ngIf="outfits.length > 0; else noOutfits">
+    <div class="outfit-card" *ngFor="let outfit of outfits; trackBy: trackByOutfitId">
+      <div class="outfit-image-container">
+        <img [src]="outfit.imageUrl || 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=500&fit=crop'" 
+             [alt]="outfit.title" 
+             class="outfit-image"
+             loading="lazy">
+        <div class="outfit-overlay">
+          <button class="btn btn-primary" [routerLink]="['/outfit', outfit.id]">View Details</button>
+          <button class="btn btn-outline btn-icon" title="Add to Bookmarks">
+            <span class="icon">❤️</span>
+          </button>
+        </div>
+        <div class="outfit-badge" *ngIf="outfit.isTrending">Trending</div>
+      </div>
+      
+      <div class="outfit-info">
+        <div class="outfit-header">
+          <h3 class="outfit-title">{{ outfit.title || 'Untitled Outfit' }}</h3>
+          <div class="outfit-rating">
+            <span class="stars">⭐⭐⭐⭐⭐</span>
+            <span class="rating-count">({{ outfit.rating || 4.8 }})</span>
+          </div>
+        </div>
+        
+        <p class="outfit-description">{{ outfit.description || 'A beautiful outfit for any occasion' }}</p>
+        
+        <div class="outfit-meta">
+          <div class="outfit-category">
+            <span class="category-tag">{{ outfit.category || 'Casual' }}</span>
+          </div>
+          
+          <div class="outfit-stats">
+            <span class="stat">
+              <span class="stat-icon">👀</span>
+              {{ outfit.views || getRandomViews() }}
+            </span>
+            <span class="stat">
+              <span class="stat-icon">❤️</span>
+              {{ outfit.likes || getRandomLikes() }}
+            </span>
+          </div>
+        </div>
+        
+        <div class="outfit-actions">
+          <button class="btn btn-primary btn-full">Save Outfit</button>
+          <button class="btn btn-outline btn-full">Share</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- No Outfits State -->
+  <ng-template #noOutfits>
+    <div class="empty-state">
+      <div class="empty-icon">👗</div>
+      <h3>No Outfits Found</h3>
+      <p>We couldn't find any outfits matching your criteria. Try adjusting your filters or search terms.</p>
+      <button class="btn btn-primary">Clear Filters</button>
+    </div>
+  </ng-template>
+</div>
+
+<!-- Load More -->
+<div class="load-more-section" *ngIf="outfits.length > 0">
+  <button class="btn btn-outline btn-lg">Load More Outfits</button>
+</div>
