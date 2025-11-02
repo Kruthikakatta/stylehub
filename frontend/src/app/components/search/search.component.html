@@ -1,0 +1,44 @@
+<div class="search-page">
+  <app-page-header 
+    title="Search Outfits" 
+    subtitle="Find the perfect outfit for any occasion"
+    backgroundClass="gradient-secondary">
+  </app-page-header>
+
+  <div class="search-container">
+    <div class="search-bar">
+      <input 
+        type="text" 
+        placeholder="Search for outfits, styles, or occasions..." 
+        class="search-input"
+        [(ngModel)]="searchQuery"
+        (input)="onSearch()">
+      <button class="search-btn" (click)="onSearch()">🔍</button>
+      <button class="clear-btn" *ngIf="searchQuery" (click)="clearSearch()">✕</button>
+    </div>
+  </div>
+
+  <div class="search-results">
+    <div class="results-header">
+      <h2 *ngIf="searchQuery">Search Results for "{{ searchQuery }}"</h2>
+      <h2 *ngIf="!searchQuery">All Outfits</h2>
+      <span class="results-count">{{ filteredResults.length }} outfit(s) found</span>
+    </div>
+    
+    <div class="results-grid" *ngIf="filteredResults.length > 0">
+      <div class="result-card" *ngFor="let outfit of filteredResults" [routerLink]="['/outfit', outfit.id]">
+        <img [src]="outfit.imageUrl" [alt]="outfit.title" loading="lazy">
+        <div class="result-info">
+          <h3>{{ outfit.title }}</h3>
+          <p>{{ outfit.category }}</p>
+          <p class="result-description">{{ outfit.description }}</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="no-results" *ngIf="filteredResults.length === 0 && searchQuery">
+      <p>No outfits found matching "{{ searchQuery }}"</p>
+      <button (click)="clearSearch()" class="btn btn-primary">Clear Search</button>
+    </div>
+  </div>
+</div>

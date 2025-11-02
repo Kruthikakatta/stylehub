@@ -1,0 +1,28 @@
+<!-- Categories Page -->
+<div class="categories-page">
+  <app-page-header 
+    title="Fashion Categories" 
+    subtitle="Explore outfits by different styles and occasions"
+    backgroundClass="gradient-hero">
+  </app-page-header>
+
+  <div class="categories-grid">
+    <div class="category-card" *ngFor="let category of categories">
+      <div class="category-image">
+        <img [src]="category.imageUrl" [alt]="category.name" loading="lazy">
+        <div class="category-overlay">
+          <h3>{{ category.name }}</h3>
+          <p>{{ category.description }}</p>
+          <span class="outfit-count">{{ category.outfitCount }} outfits</span>
+        </div>
+      </div>
+      <div class="category-info">
+        <h3>{{ category.name }}</h3>
+        <p>{{ category.description }}</p>
+        <a [routerLink]="['/outfits']" [queryParams]="{category: category.name.toLowerCase()}" class="btn btn-primary">
+          Explore Outfits
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

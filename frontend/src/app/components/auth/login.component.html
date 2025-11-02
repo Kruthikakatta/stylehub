@@ -1,0 +1,47 @@
+<div class="auth-page">
+  <div class="auth-container">
+    <div class="auth-header">
+      <h1>Login</h1>
+      <p>Welcome back! Please login to your account.</p>
+    </div>
+
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="alert alert-error">
+      {{ errorMessage }}
+    </div>
+
+    <form class="auth-form" (ngSubmit)="login()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input 
+          id="email" 
+          type="email" 
+          class="form-input" 
+          placeholder="Enter your email"
+          [(ngModel)]="email"
+          name="email"
+          required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="password-input">
+          <input 
+            id="password" 
+            [type]="showPassword ? 'text' : 'password'" 
+            class="form-input" 
+            placeholder="Enter your password"
+            [(ngModel)]="password"
+            name="password"
+            required>
+          <button type="button" class="password-toggle" (click)="togglePassword()">
+            <span class="icon">{{ showPassword ? '👁️' : '🙈' }}</span>
+          </button>
+        </div>
+      </div>
+      <button type="submit" class="btn-full" [disabled]="isLoading">
+        {{ isLoading ? 'Logging in...' : 'Login' }}
+      </button>
+      <p>Don't have an account? <a routerLink="/signup">Sign up</a></p>
+    </form>
+  </div>
+</div>

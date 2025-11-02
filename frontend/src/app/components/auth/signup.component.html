@@ -1,0 +1,124 @@
+<div class="auth-page">
+  <div class="auth-container">
+    <div class="auth-header">
+      <h1>Join StyleHub</h1>
+      <p>Create your account and start exploring amazing outfits</p>
+    </div>
+
+    <!-- Success Message -->
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="alert alert-error">
+      {{ errorMessage }}
+    </div>
+
+    <form class="auth-form" (ngSubmit)="signup()">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input 
+          type="text" 
+          id="name"
+          [(ngModel)]="name" 
+          name="name" 
+          placeholder="Enter your full name"
+          class="form-input"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input 
+          type="email" 
+          id="email"
+          [(ngModel)]="email" 
+          name="email" 
+          placeholder="Enter your email"
+          class="form-input"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="password-input">
+          <input 
+            [type]="showPassword ? 'text' : 'password'" 
+            id="password"
+            [(ngModel)]="password" 
+            name="password" 
+            placeholder="Create a password"
+            class="form-input"
+            required>
+          <button type="button" class="password-toggle" (click)="togglePassword()">
+            <span class="icon">{{ showPassword ? '👁️' : '🙈' }}</span>
+          </button>
+        </div>
+        <div class="password-strength" *ngIf="password">
+          <div class="strength-bar">
+            <div class="strength-fill" [class]="getPasswordStrength()"></div>
+          </div>
+          <span class="strength-text">{{ getPasswordStrengthText() }}</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="passwordConfirm">Confirm Password</label>
+        <input 
+          type="password" 
+          id="passwordConfirm"
+          [(ngModel)]="passwordConfirm" 
+          name="passwordConfirm" 
+          placeholder="Confirm your password"
+          class="form-input"
+          required>
+      </div>
+
+      <div class="form-options">
+        <label class="checkbox-label">
+          <input type="checkbox" class="checkbox" required>
+          I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a>
+        </label>
+      </div>
+
+      <div class="form-options">
+        <label class="checkbox-label">
+          <input type="checkbox" class="checkbox">
+          Subscribe to fashion updates and style tips
+        </label>
+      </div>
+
+      <button type="submit" class="btn-full" [disabled]="!isFormValid() || isLoading">
+        <span class="icon">✨</span>
+        {{ isLoading ? 'Creating Account...' : 'Create Account' }}
+      </button>
+    </form>
+
+    <div class="auth-divider">
+      <span>or sign up with</span>
+    </div>
+
+    <div class="social-login">
+      <button class="btn-social google">
+        <span class="icon">📧</span>
+        Google
+      </button>
+      <button class="btn-social facebook">
+        <span class="icon">📘</span>
+        Facebook
+      </button>
+    </div>
+
+    <div class="auth-footer">
+      <p>Already have an account? <a routerLink="/login" class="auth-link">Sign in here</a></p>
+    </div>
+  </div>
+
+  <div class="auth-decoration">
+    <div class="decoration-circle circle-1"></div>
+    <div class="decoration-circle circle-2"></div>
+    <div class="decoration-circle circle-3"></div>
+    <div class="decoration-circle circle-4"></div>
+  </div>
+</div>

@@ -1,0 +1,118 @@
+<!-- Home Component HTML -->
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1 class="hero-title">Discover Your Perfect Style</h1>
+      <p class="hero-subtitle">
+        Explore curated fashion collections, get outfit inspiration, and create your unique style with StyleHub.
+      </p>
+      <div class="hero-actions">
+        <a routerLink="/outfits" class="btn btn-primary btn-lg">Explore Outfits</a>
+        <a routerLink="/categories" class="btn btn-outline btn-lg">Browse Categories</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hero-card">
+        <div class="hero-card-content">
+          <div class="style-icon">✨</div>
+          <h3>Trending Now</h3>
+          <p>Discover the latest fashion trends</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+  <div class="features-header">
+    <h2>Why Choose StyleHub?</h2>
+    <p>Your ultimate destination for fashion inspiration and style discovery</p>
+  </div>
+  
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">👗</div>
+      <h3>Curated Collections</h3>
+      <p>Handpicked outfits from top fashion influencers and designers</p>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon">🔍</div>
+      <h3>Smart Search</h3>
+      <p>Find the perfect outfit with our advanced search and filter system</p>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon">❤️</div>
+      <h3>Save Favorites</h3>
+      <p>Bookmark your favorite outfits and create your personal style collection</p>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon">📝</div>
+      <h3>Style Notes</h3>
+      <p>Take notes on outfits and create your personal fashion diary</p>
+    </div>
+  </div>
+</section>
+
+<!-- Categories Preview -->
+<section class="categories-preview">
+  <div class="section-header">
+    <h2>Popular Categories</h2>
+    <a routerLink="/categories" class="view-all">View All →</a>
+  </div>
+  
+  <div class="categories-grid">
+    <div class="category-card" *ngFor="let category of categories">
+      <div class="category-image">
+        <span class="category-emoji">{{ category.emoji }}</span>
+      </div>
+      <h3>{{ category.name }}</h3>
+      <p>{{ category.description }}</p>
+      <a routerLink="/categories" class="category-link">Explore</a>
+    </div>
+  </div>
+</section>
+
+<!-- Trending Outfits -->
+<section class="trending-outfits">
+  <div class="section-header">
+    <h2>Trending Outfits</h2>
+    <a routerLink="/outfits" class="view-all">View All →</a>
+  </div>
+  
+  <div class="outfits-grid">
+    <div class="outfit-card" *ngFor="let outfit of trendingOutfits">
+      <div class="outfit-image">
+        <img [src]="outfit.imageUrl" [alt]="outfit.title" loading="lazy">
+        <div class="outfit-overlay">
+          <a routerLink="/outfit/{{outfit.id}}" class="btn btn-primary btn-sm">View Details</a>
+        </div>
+      </div>
+      <div class="outfit-info">
+        <h3>{{ outfit.title }}</h3>
+        <p>{{ outfit.description }}</p>
+        <div class="outfit-meta">
+          <span class="outfit-category">{{ outfit.category }}</span>
+          <span class="outfit-likes">❤️ {{ outfit.likes }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta">
+  <div class="cta-content">
+    <h2>Ready to Find Your Style?</h2>
+    <p>Join thousands of fashion enthusiasts and discover your perfect outfits today.</p>
+    <div class="cta-actions">
+      <a routerLink="/signup" class="btn btn-primary btn-lg">Get Started</a>
+      <a routerLink="/outfits" class="btn btn-outline btn-lg">Browse Outfits</a>
+    </div>
+  </div>
+</section>

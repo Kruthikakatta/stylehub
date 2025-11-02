@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Casual Summer Dress",
+    "description": "Lightweight summer dress in floral print.",
+    "imageUrl": "https://via.placeholder.com/200",
+    "category": "Casual"
+  },
+  {
+    "title": "Formal Blazer",
+    "description": "Elegant blazer for office wear.",
+    "imageUrl": "https://via.placeholder.com/200",
+    "category": "Formal"
+  },
+  {
+    "title": "Denim Jacket",
+    "description": "Classic denim jacket for casual outings.",
+    "imageUrl": "https://via.placeholder.com/200",
+    "category": "Casual"
+  }
+]

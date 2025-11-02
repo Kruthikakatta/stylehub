@@ -1,0 +1,91 @@
+<!-- Footer Component -->
+<footer class="footer">
+  <div class="footer-content">
+    <!-- Main Footer Content -->
+    <div class="footer-main">
+      <!-- Brand Section -->
+      <div class="footer-section brand-section">
+        <div class="footer-brand">
+          <svg class="brand-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="currentColor"/>
+            <path d="M19 15L20.5 19.5L25 21L20.5 22.5L19 27L17.5 22.5L13 21L17.5 19.5L19 15Z" fill="currentColor"/>
+          </svg>
+          <h3>StyleHub</h3>
+        </div>
+        <p class="brand-description">
+          Discover your perfect style with our curated fashion collections and outfit inspiration. 
+          Join thousands of fashion enthusiasts worldwide.
+        </p>
+        <div class="social-links">
+          <a *ngFor="let social of socialLinks" 
+             [href]="social.url" 
+             target="_blank" 
+             rel="noopener"
+             class="social-link"
+             [title]="social.label">
+            <span class="social-icon">{{ social.icon }}</span>
+            <span class="social-label">{{ social.label }}</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links Section -->
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li *ngFor="let link of quickLinks">
+            <a [routerLink]="link.link" class="footer-link">{{ link.label }}</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Account Section -->
+      <div class="footer-section">
+        <h4>Account</h4>
+        <ul class="footer-links">
+          <li *ngFor="let link of accountLinks">
+            <a [routerLink]="link.link" class="footer-link">{{ link.label }}</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Support Section -->
+      <div class="footer-section">
+        <h4>Support</h4>
+        <ul class="footer-links">
+          <li *ngFor="let link of supportLinks">
+            <a [routerLink]="link.link" class="footer-link">{{ link.label }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Newsletter Section -->
+    <div class="newsletter-section">
+      <div class="newsletter-content">
+        <div class="newsletter-text">
+          <h4>Stay in Style</h4>
+          <p>Subscribe to our newsletter for the latest fashion trends and outfit inspiration.</p>
+        </div>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email address" class="newsletter-input" required>
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="footer-bottom">
+    <div class="footer-bottom-content">
+      <div class="copyright">
+        <p>&copy; {{ currentYear }} StyleHub. All rights reserved.</p>
+      </div>
+      <div class="footer-bottom-links">
+        <a routerLink="/privacy" class="bottom-link">Privacy</a>
+        <a routerLink="/terms" class="bottom-link">Terms</a>
+        <a routerLink="/cookies" class="bottom-link">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
