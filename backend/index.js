@@ -94,12 +94,8 @@ if (frontendPath) {
   app.use(express.static(frontendPath));
   
   // Handle Angular routing - return index.html for all non-API routes
-  app.get('*', (req, res) => {
-    // Don't serve index.html for API routes
-    if (req.path.startsWith('/api')) {
-      return res.status(404).json({ message: 'API endpoint not found' });
-    }
-    
+  // Use catch-all route compatible with Express 5
+  app.get(/^(?!\/api).*/, (req, res) => {
     const indexPath = path.join(frontendPath, 'index.html');
     if (fs.existsSync(indexPath)) {
       res.sendFile(indexPath);
