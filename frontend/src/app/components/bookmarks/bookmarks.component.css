@@ -1,44 +1,61 @@
-/* Bookmarks Component Styles */
+/* ===== Import Elegant Font ===== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
-.bookmarks-page {
-  padding: var(--space-6);
+/* ===== Global Styles ===== */
+body, section {
+  font-family: 'Montserrat', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  line-height: 1.5;
 }
 
+/* ===== Bookmarks Page ===== */
+.bookmarks-page {
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Page Header */
 .page-header {
   text-align: center;
-  margin-bottom: var(--space-8);
+  margin-bottom: 3rem;
 }
 
 .page-header h1 {
-  font-size: var(--font-size-4xl);
+  font-size: 2.5rem;
   font-weight: 700;
-  color: var(--gray-900);
-  margin-bottom: var(--space-4);
+  margin-bottom: 0.5rem;
 }
 
 .page-header p {
-  font-size: var(--font-size-lg);
-  color: var(--gray-600);
+  font-size: 1.1rem;
+  color: #555;
 }
 
+/* Bookmarks Grid */
 .bookmarks-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: var(--space-6);
+  gap: 1.5rem;
 }
 
+/* Bookmark Card */
 .bookmark-card {
-  background: white;
-  border-radius: var(--radius-xl);
+  background: #fff;
+  border-radius: 1rem;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
-  transition: transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .bookmark-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
+/* Bookmark Image */
 .bookmark-image {
   position: relative;
   height: 250px;
@@ -48,62 +65,115 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
+.bookmark-card:hover .bookmark-image img {
+  transform: scale(1.05);
+}
+
+/* Remove Button */
 .remove-btn {
   position: absolute;
-  top: var(--space-2);
-  right: var(--space-2);
+  top: 10px;
+  right: 10px;
   background: rgba(255, 255, 255, 0.9);
   border: none;
-  border-radius: var(--radius-full);
+  border-radius: 50%;
   width: 32px;
   height: 32px;
+  font-size: 1rem;
   cursor: pointer;
-  font-size: var(--font-size-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
 }
 
+.remove-btn:hover {
+  background: rgba(255, 0, 0, 0.9);
+  color: #fff;
+}
+
+/* Bookmark Info */
 .bookmark-info {
-  padding: var(--space-4);
+  padding: 1rem 1.5rem;
 }
 
 .bookmark-info h3 {
-  font-size: var(--font-size-lg);
+  font-size: 1.25rem;
   font-weight: 600;
-  margin-bottom: var(--space-1);
+  margin-bottom: 0.25rem;
 }
 
 .bookmark-info p {
-  color: var(--gray-600);
-  font-size: var(--font-size-sm);
-  margin-bottom: var(--space-2);
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 0.5rem;
 }
 
 .saved-date {
-  color: var(--gray-500);
-  font-size: var(--font-size-xs);
+  font-size: 0.85rem;
+  color: #999;
 }
 
+/* Empty State */
 .empty-state {
   text-align: center;
-  padding: var(--space-16) var(--space-6);
-  background: white;
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-md);
+  padding: 4rem 2rem;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 .empty-icon {
   font-size: 4rem;
-  margin-bottom: var(--space-4);
+  margin-bottom: 1rem;
 }
 
 .empty-state h3 {
-  font-size: var(--font-size-2xl);
+  font-size: 1.8rem;
   font-weight: 600;
-  margin-bottom: var(--space-3);
+  margin-bottom: 1rem;
 }
 
 .empty-state p {
-  color: var(--gray-600);
-  margin-bottom: var(--space-6);
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #4B0082;
+  color: #fff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #9370DB;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .page-header h1 {
+    font-size: 2rem;
+  }
+
+  .bookmarks-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bookmark-image {
+    height: 200px;
+  }
 }

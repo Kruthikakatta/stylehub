@@ -1,50 +1,47 @@
-/* Category Component Styles */
-
+/* ===== Categories Page Styles ===== */
 .categories-page {
-  padding: var(--space-6);
-}
-
-.page-header {
-  text-align: center;
-  margin-bottom: var(--space-12);
+  padding: 3rem 1.5rem;
+  font-family: 'Poppins', Arial, sans-serif;
+  color: #333;
 }
 
 .page-header h1 {
-  font-size: var(--font-size-4xl);
+  font-size: 2.5rem; /* larger font for elegance */
   font-weight: 700;
-  color: var(--gray-900);
-  margin-bottom: var(--space-4);
+  margin-bottom: 1rem;
 }
 
 .page-header p {
-  font-size: var(--font-size-lg);
-  color: var(--gray-600);
-  max-width: 600px;
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 650px;
   margin: 0 auto;
+  line-height: 1.6;
 }
 
 .categories-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: var(--space-8);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
 .category-card {
-  background: white;
-  border-radius: var(--radius-2xl);
+  background-color: #ffffff;
+  border-radius: 1rem;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
   transition: all 0.3s ease;
 }
 
 .category-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-xl);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
 }
 
 .category-image {
   position: relative;
-  height: 250px;
+  height: 280px;
   overflow: hidden;
 }
 
@@ -60,20 +57,18 @@
 }
 
 .category-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.7) 100%);
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: white;
+  color: #fff;
   opacity: 0;
   transition: opacity 0.3s ease;
+  padding: 1rem;
 }
 
 .category-card:hover .category-overlay {
@@ -81,64 +76,58 @@
 }
 
 .category-overlay h3 {
-  font-size: var(--font-size-2xl);
+  font-size: 1.8rem;
   font-weight: 700;
-  margin-bottom: var(--space-2);
+  margin-bottom: 0.5rem;
 }
 
 .category-overlay p {
-  font-size: var(--font-size-base);
-  margin-bottom: var(--space-3);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
   opacity: 0.9;
 }
 
 .outfit-count {
-  background: rgba(255, 255, 255, 0.2);
-  padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius-full);
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.25);
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  backdrop-filter: blur(8px);
 }
 
 .category-info {
-  padding: var(--space-6);
+  padding: 1.5rem;
 }
 
 .category-info h3 {
-  font-size: var(--font-size-xl);
+  font-size: 1.5rem;
   font-weight: 600;
-  color: var(--gray-900);
-  margin-bottom: var(--space-2);
+  color: #333;
+  margin-bottom: 0.5rem;
 }
 
 .category-info p {
-  color: var(--gray-600);
-  margin-bottom: var(--space-4);
-  line-height: 1.5;
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1rem;
+  line-height: 1.6;
 }
 
 .category-info .btn {
   width: 100%;
   justify-content: center;
+  font-size: 1rem;
+  padding: 0.75rem 0;
 }
 
-/* Responsive Design */
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
-  .categories-page {
-    padding: var(--space-4);
-  }
-
-  .page-header h1 {
-    font-size: var(--font-size-3xl);
-  }
-
   .categories-grid {
     grid-template-columns: 1fr;
-    gap: var(--space-6);
   }
 
   .category-image {
-    height: 200px;
+    height: 220px;
   }
 }

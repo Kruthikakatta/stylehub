@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -15,25 +16,76 @@ export class SignupComponent {
   name = '';
   email = '';
   password = '';
+  passwordConfirm = '';
   showPassword = false;
+  isLoading = false;
+  errorMessage = '';
+  successMessage = '';
 
-  constructor(private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   signup() {
-    if (this.name && this.email && this.password) {
-      // Simulate signup process
-      console.log('Signing up with:', { name: this.name, email: this.email });
-      this.router.navigate(['/login']);
-    } else {
-      alert('Please fill all fields');
+    if (!this.isFormValid()) {
+      this.errorMessage = 'Please fill all fields with valid data';
+      return;
     }
+
+    if (this.password !== this.passwordConfirm) {
+      this.errorMessage = 'Passwords do not match';
+      return;
+    }
+
+    this.isLoading = true;
+    this.errorMessage = '';
+    this.successMessage = '';
+
+    this.authService.signup(this.name, this.email, this.password, this.passwordConfirm).subscribe({
+      next: (response) => {
+        console.log('Signup successful:', response);
+        this.isLoading = false;
+        this.successMessage = 'Account created successfully! Redirecting to home...';
+        setTimeout(() => {
+          this.router.navigate(['/']);
+        }, 2000);
+      },
+      error: (error) => {
+        console.error('Signup error:', error);
+        console.error('Error details:', {
+          status: error.status,
+          statusText: error.statusText,
+          message: error.error?.message,
+          error: error.error
+        });
+        this.isLoading = false;
+        
+        // Show more specific error messages
+        if (error.error?.message) {
+          this.errorMessage = error.error.message;
+        } else if (error.status === 0) {
+          this.errorMessage = 'Cannot connect to server. Please make sure the backend is running.';
+        } else if (error.status === 400) {
+          this.errorMessage = error.error?.message || 'Invalid data. Please check your input.';
+        } else if (error.status === 500) {
+          this.errorMessage = 'Server error. Please try again later.';
+        } else {
+          this.errorMessage = 'Signup failed. Please try again.';
+        }
+      }
+    });
   }
 
   togglePassword() {
     this.showPassword = !this.showPassword;
     const passwordInput = document.getElementById('password') as HTMLInputElement;
+    const passwordConfirmInput = document.getElementById('passwordConfirm') as HTMLInputElement;
     if (passwordInput) {
       passwordInput.type = this.showPassword ? 'text' : 'password';
+    }
+    if (passwordConfirmInput) {
+      passwordConfirmInput.type = this.showPassword ? 'text' : 'password';
     }
   }
 
@@ -69,6 +121,6 @@ export class SignupComponent {
   }
 
   isFormValid(): boolean {
-    return !!(this.name && this.email && this.password && this.password.length >= 6);
+    return !!(this.name && this.email && this.password && this.passwordConfirm && this.password.length >= 6);
   }
 }

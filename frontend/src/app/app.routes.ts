@@ -8,15 +8,17 @@ import { NotesComponent } from './components/notes/notes.component';
 import { SearchComponent } from './components/search/search.component';
 import { LoginComponent } from './components/auth/login.component';
 import { SignupComponent } from './components/auth/signup.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
-  {path:'',component:HomeComponent},
-  {path:'outfits',component:OutfitListComponent},
-  {path:'outfit/:id',component:OutfitDetailComponent},
-  {path:'categories',component:CategoryComponent},
-  {path:'bookmarks',component:BookmarksComponent},
-  {path:'notes',component:NotesComponent},
-  {path:'search',component:SearchComponent},
-  {path:'login',component:LoginComponent},
-  {path:'signup',component:SignupComponent}
+  { path: '', component: HomeComponent },
+  { path: 'outfits', component: OutfitListComponent },
+  { path: 'outfit/:id', component: OutfitDetailComponent },
+  { path: 'categories', component: CategoryComponent },
+  { path: 'bookmarks', component: BookmarksComponent },
+  { path: 'notes', component: NotesComponent },
+  { path: 'search', component: SearchComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: '**', redirectTo: '' } // Wildcard route
 ];

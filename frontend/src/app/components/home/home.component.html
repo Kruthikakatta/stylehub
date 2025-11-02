@@ -1,3 +1,5 @@
+<!-- Home Component HTML -->
+
 <!-- Hero Section -->
 <section class="hero">
   <div class="hero-content">
@@ -88,7 +90,7 @@
       <div class="outfit-image">
         <img [src]="outfit.imageUrl" [alt]="outfit.title" loading="lazy">
         <div class="outfit-overlay">
-          <button class="btn btn-primary btn-sm">View Details</button>
+          <a routerLink="/outfit/{{outfit.id}}" class="btn btn-primary btn-sm">View Details</a>
         </div>
       </div>
       <div class="outfit-info">

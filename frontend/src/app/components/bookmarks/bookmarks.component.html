@@ -1,15 +1,16 @@
 <!-- Bookmarks Page -->
 <div class="bookmarks-page">
-  <div class="page-header">
-    <h1>My Bookmarks</h1>
-    <p>Your saved outfits and style inspiration</p>
-  </div>
+  <app-page-header 
+    title="My Bookmarks" 
+    subtitle="Your saved outfits and style inspiration"
+    backgroundClass="gradient-secondary">
+  </app-page-header>
 
   <div class="bookmarks-grid" *ngIf="bookmarks.length > 0; else noBookmarks">
     <div class="bookmark-card" *ngFor="let bookmark of bookmarks">
       <div class="bookmark-image">
         <img [src]="bookmark.imageUrl" [alt]="bookmark.title">
-        <button class="remove-btn" title="Remove from bookmarks">❌</button>
+        <button class="remove-btn" (click)="removeBookmark(bookmark)" title="Remove from bookmarks">❌</button>
       </div>
       <div class="bookmark-info">
         <h3>{{ bookmark.title }}</h3>

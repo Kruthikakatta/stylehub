@@ -1,43 +1,81 @@
 <!-- Notes Page -->
 <div class="notes-page">
-  <div class="page-header">
-    <h1>Style Notes</h1>
-    <p>Keep track of your fashion ideas and outfit inspirations</p>
-  </div>
+  <app-page-header 
+    title="Style Notes" 
+    subtitle="Keep track of your fashion ideas and outfit inspirations"
+    backgroundClass="gradient-tertiary">
+  </app-page-header>
 
+  <!-- Notes Container -->
   <div class="notes-container">
-    <div class="add-note-section">
-      <h3>Add New Note</h3>
-      <form class="note-form">
-        <input type="text" placeholder="Note title..." class="form-input">
-        <textarea placeholder="Write your style notes here..." class="form-textarea" rows="4"></textarea>
-        <button type="submit" class="btn btn-primary">Save Note</button>
+    
+    <!-- Add/Edit Note Form -->
+    <div class="add-note-section" *ngIf="showAddForm">
+      <h3>{{ editingNote ? 'Edit Note' : 'Add New Note' }}</h3>
+      <form class="note-form" (ngSubmit)="saveNote()">
+        <input 
+          type="text" 
+          placeholder="Note title..." 
+          class="form-input"
+          [(ngModel)]="noteForm.title"
+          name="title"
+          required>
+        <textarea 
+          placeholder="Write your style notes here..." 
+          class="form-textarea" 
+          rows="4"
+          [(ngModel)]="noteForm.content"
+          name="content"></textarea>
+        <input 
+          type="text" 
+          placeholder="Tags (e.g., #summer #casual)" 
+          class="form-input"
+          [(ngModel)]="noteForm.tags"
+          name="tags">
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Save Note</button>
+          <button type="button" class="btn btn-secondary" (click)="cancelForm()">Cancel</button>
+        </div>
       </form>
     </div>
 
+    <!-- Toggle Add Form Button -->
+    <div class="add-note-toggle" *ngIf="!showAddForm">
+      <button class="btn btn-primary btn-lg" (click)="openAddForm()">
+        <span class="icon">➕</span>
+        Add New Note
+      </button>
+    </div>
+
+    <!-- Notes Grid -->
     <div class="notes-grid" *ngIf="notes.length > 0; else noNotes">
       <div class="note-card" *ngFor="let note of notes">
         <div class="note-header">
           <h4>{{ note.title }}</h4>
           <div class="note-actions">
-            <button class="btn-icon" title="Edit">✏️</button>
-            <button class="btn-icon" title="Delete">🗑️</button>
+            <button class="btn-icon" title="Edit" (click)="editNote(note)">✏️</button>
+            <button class="btn-icon" title="Delete" (click)="deleteNote(note)">🗑️</button>
           </div>
         </div>
         <p class="note-content">{{ note.content }}</p>
         <div class="note-meta">
           <span class="note-date">{{ note.date }}</span>
-          <span class="note-tags">{{ note.tags }}</span>
+          <div class="note-tags">
+            <span *ngFor="let tag of getTagArray(note.tags)" class="tag">{{ tag }}</span>
+          </div>
         </div>
       </div>
     </div>
 
+    <!-- Empty State -->
     <ng-template #noNotes>
       <div class="empty-state">
         <div class="empty-icon">📝</div>
         <h3>No Notes Yet</h3>
         <p>Start adding your style notes and fashion ideas!</p>
+        <button class="btn btn-primary" (click)="openAddForm()">Add Your First Note</button>
       </div>
     </ng-template>
+
   </div>
 </div>

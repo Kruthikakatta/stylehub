@@ -17,7 +17,30 @@ export class OutfitListComponent implements OnInit {
   constructor(private outfitService: OutfitService) {}
 
   ngOnInit(): void {
-    // Mock data for demonstration
+    // Load outfits from API
+    this.outfitService.getOutfits().subscribe({
+      next: (data: any) => {
+        console.log('Outfits loaded from API:', data);
+        if (data && data.length > 0) {
+          // Map MongoDB _id to id for compatibility
+          this.outfits = data.map((outfit: any) => ({
+            ...outfit,
+            id: outfit._id || outfit.id
+          }));
+        } else {
+          // Fallback to mock data if no API data
+          this.loadMockData();
+        }
+      },
+      error: (error: any) => {
+        console.error('Error loading outfits from API:', error);
+        // Fallback to mock data on error
+        this.loadMockData();
+      }
+    });
+  }
+
+  loadMockData() {
     this.outfits = [
       {
         id: 1,
@@ -62,42 +85,8 @@ export class OutfitListComponent implements OnInit {
         rating: 4.6,
         views: 750,
         likes: 43
-      },
-      {
-        id: 5,
-        title: 'Weekend Casual',
-        description: 'Relaxed outfit for weekend adventures',
-        imageUrl: 'https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=400&h=500&fit=crop',
-        category: 'Casual',
-        isTrending: true,
-        rating: 4.5,
-        views: 890,
-        likes: 72
-      },
-      {
-        id: 6,
-        title: 'Garden Party',
-        description: 'Elegant floral outfit for outdoor celebrations',
-        imageUrl: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&h=500&fit=crop',
-        category: 'Party',
-        isTrending: false,
-        rating: 4.9,
-        views: 1650,
-        likes: 134
       }
     ];
-    
-    // Try to load from service, fallback to mock data
-    this.outfitService.getOutfits().subscribe({
-      next: (data) => {
-        if (data && data.length > 0) {
-          this.outfits = data;
-        }
-      },
-      error: (error) => {
-        console.log('Using mock data:', error);
-      }
-    });
   }
 
   trackByOutfitId(index: number, outfit: any): number {

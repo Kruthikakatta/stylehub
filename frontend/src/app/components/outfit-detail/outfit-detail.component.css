@@ -1,5 +1,12 @@
 /* Outfit Detail Component Styles */
 
+.outfit-detail {
+  background: #ffffff;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
 /* Loading State */
 .loading-state {
   display: flex;
@@ -8,6 +15,7 @@
   justify-content: center;
   padding: var(--space-20) var(--space-6);
   text-align: center;
+  color: #333;
 }
 
 .loading-spinner {
@@ -37,10 +45,11 @@
   gap: var(--space-2);
   margin-bottom: var(--space-8);
   font-size: var(--font-size-sm);
+  color: #333 !important;
 }
 
 .breadcrumb a {
-  color: var(--primary-600);
+  color: #4B0082 !important;
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -50,11 +59,11 @@
 }
 
 .separator {
-  color: var(--gray-400);
+  color: #9ca3af !important;
 }
 
 .current {
-  color: var(--gray-600);
+  color: #4b5563 !important;
 }
 
 /* Detail Content */
@@ -165,7 +174,7 @@
 .outfit-title {
   font-size: var(--font-size-4xl);
   font-weight: 700;
-  color: var(--gray-900);
+  color: #1f2937 !important;
   margin-bottom: var(--space-4);
   line-height: 1.2;
 }
@@ -199,7 +208,7 @@
 }
 
 .rating-text {
-  color: var(--gray-600);
+  color: #4b5563 !important;
   font-size: var(--font-size-sm);
 }
 
@@ -220,13 +229,13 @@
   display: block;
   font-size: var(--font-size-xl);
   font-weight: 700;
-  color: var(--gray-900);
+  color: #1f2937 !important;
   margin-bottom: var(--space-1);
 }
 
 .stat-label {
   font-size: var(--font-size-sm);
-  color: var(--gray-600);
+  color: #4b5563 !important;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -241,12 +250,12 @@
 .related-section h3 {
   font-size: var(--font-size-xl);
   font-weight: 600;
-  color: var(--gray-900);
+  color: #1f2937 !important;
   margin-bottom: var(--space-4);
 }
 
 .outfit-description p {
-  color: var(--gray-600);
+  color: #4b5563 !important;
   line-height: 1.6;
   font-size: var(--font-size-lg);
 }
@@ -263,7 +272,7 @@
 .tips-list li {
   padding: var(--space-3) 0;
   border-bottom: 1px solid var(--gray-200);
-  color: var(--gray-700);
+  color: #374151 !important;
   position: relative;
   padding-left: var(--space-6);
 }

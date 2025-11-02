@@ -1,9 +1,18 @@
-<!-- Signup Page -->
 <div class="auth-page">
   <div class="auth-container">
     <div class="auth-header">
       <h1>Join StyleHub</h1>
       <p>Create your account and start exploring amazing outfits</p>
+    </div>
+
+    <!-- Success Message -->
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="alert alert-error">
+      {{ errorMessage }}
     </div>
 
     <form class="auth-form" (ngSubmit)="signup()">
@@ -35,7 +44,7 @@
         <label for="password">Password</label>
         <div class="password-input">
           <input 
-            type="password" 
+            [type]="showPassword ? 'text' : 'password'" 
             id="password"
             [(ngModel)]="password" 
             name="password" 
@@ -54,10 +63,21 @@
         </div>
       </div>
 
+      <div class="form-group">
+        <label for="passwordConfirm">Confirm Password</label>
+        <input 
+          type="password" 
+          id="passwordConfirm"
+          [(ngModel)]="passwordConfirm" 
+          name="passwordConfirm" 
+          placeholder="Confirm your password"
+          class="form-input"
+          required>
+      </div>
+
       <div class="form-options">
         <label class="checkbox-label">
           <input type="checkbox" class="checkbox" required>
-          <span class="checkmark"></span>
           I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a>
         </label>
       </div>
@@ -65,14 +85,13 @@
       <div class="form-options">
         <label class="checkbox-label">
           <input type="checkbox" class="checkbox">
-          <span class="checkmark"></span>
           Subscribe to fashion updates and style tips
         </label>
       </div>
 
-      <button type="submit" class="btn btn-primary btn-full" [disabled]="!isFormValid()">
+      <button type="submit" class="btn-full" [disabled]="!isFormValid() || isLoading">
         <span class="icon">✨</span>
-        Create Account
+        {{ isLoading ? 'Creating Account...' : 'Create Account' }}
       </button>
     </form>
 
@@ -81,11 +100,11 @@
     </div>
 
     <div class="social-login">
-      <button class="btn btn-outline btn-social">
+      <button class="btn-social google">
         <span class="icon">📧</span>
         Google
       </button>
-      <button class="btn btn-outline btn-social">
+      <button class="btn-social facebook">
         <span class="icon">📘</span>
         Facebook
       </button>
@@ -96,7 +115,6 @@
     </div>
   </div>
 
-  <!-- Decorative Background -->
   <div class="auth-decoration">
     <div class="decoration-circle circle-1"></div>
     <div class="decoration-circle circle-2"></div>
